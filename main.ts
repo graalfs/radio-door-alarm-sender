@@ -3,6 +3,7 @@ input.onButtonPressed(Button.A, function () {
 })
 radio.setGroup(19)
 radio.setTransmitPower(7)
+basic.showIcon(IconNames.Yes)
 basic.forever(function () {
     if (input.magneticForce(Dimension.Strength) > 500) {
         radio.sendString("C")
@@ -10,4 +11,16 @@ basic.forever(function () {
         radio.sendString("O")
     }
     basic.pause(5000)
+})
+loops.everyInterval(5000, function () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(100)
+    basic.clearScreen()
 })
